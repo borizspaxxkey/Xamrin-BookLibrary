@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -88,15 +88,23 @@
     <Reference Include="System.Web.Services" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="sqlite-net-pcl">
+      <Version>1.8.116</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Model1.cs" />
+    <Compile Include="Database\BookDatabase.cs" />
+    <Compile Include="Database\IBookDatabase.cs" />
+    <Compile Include="Models\BookItem.cs" />
+    <None Include="Views\BookLibraryListing.cshtml" />
+    <None Include="Views\BookLibraryAddEdit.cshtml" />
     <Compile Include="Views\RazorView.cs">
       <DependentUpon>RazorView.cshtml</DependentUpon>
     </Compile>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="SceneDelegate.cs" />
+    <Compile Include="Views\WebViewController.cs" />
     <Compile Include="WebViewController.cs" />
     <Compile Include="WebViewController.designer.cs">
       <DependentUpon>WebViewController.cs</DependentUpon>
@@ -111,7 +119,9 @@
     <None Include="Entitlements.plist" />
   </ItemGroup>
   <ItemGroup>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\style.css" />

@@ -1,0 +1,77 @@
+﻿@using BookLibrary.Models
+@model BookItem
+     <html>
+     <head>
+     <link rel="stylesheet" href="style.css" />
+     </head>
+     <body>
+        @if (Model.Id > 0)
+        {
+             <h1>Editing Book Details</h1>
+        }
+        else
+        {
+            <h1>Adding Book Details</h1>
+        }
+        <table>
+            <form action="hybrid:SaveBookDetails" method="GET">
+                <input name="Id" type="hidden" value="@Model.Id" />
+                <tr>
+                    <td>
+                     <label for="Title">Book Title:</label>
+                     <input id="Title" name="Title" type="text" placeholder="Book Title" value="@Model.Title" />
+                    </td>
+                 <tr>
+                 <td>
+                     <label for="ImageUrl">Book Image URL:</label>
+                     <input id="ImageUrl" name="ImageUrl" type="text" placeholder="Book Image URL" value=@Model.ImageUrl />
+                 </td>
+                 <tr>
+                 <td>
+                     <label for="Author">Author Name:</label>
+                     <input id="Author" name="Author" type="text" placeholder="Author name" value="@Model.Author" />
+                 </td>
+                 <tr>
+                 <td>
+                     <label for="Category">Category:</label>
+                     <input id="Category" name="Category" type="text" placeholder="Book Category" value="@Model.Category" />
+                 </td>
+                 <tr>
+                 <td>
+                     <label for="PublishedYear">Published Year:</label>
+                     <input id="PublishedYear" name="PublishedYear" placeholder="Published Year" value="@Model.PublishedYear" />
+                 </td>
+                 <tr>
+                 <td>
+                     <label for="Publisher">Publisher:</label>
+                     <input id="Publisher" name="Publisher" placeholder="Publisher" value="@Model.Publisher" />
+                 </td>
+                 <tr>
+                 <td>
+                     <label for="Pages">No. Pages:</label>
+                     <input id="Pages" name="NoPages" type="number" placeholder="Total Pages" maxlength="4" value="@Model.NoPages" />
+                 </td>
+                 <tr>
+                 <td>
+                     <label for="ISBN">Book ISBN:</label>
+                     <input id="ISBN" name="Isbn" type="text" placeholder="Book ISBN" value="@Model.Isbn" />
+                 </td>
+                 <tr>
+                 <td>
+                     <label for="Summary">Book Summary:</label>
+                     <textarea id="Summary" name="Summary" placeholder="Book Summary" rows="10" cols="45">@Model.Summary</textarea>
+                 </td>
+                 <tr>
+                 <td colspan="8">
+                     <input type="submit" name="Button" value="Save" />
+                     <input type="submit" name="Button" value="Cancel" />
+                     @if (Model.Id > 0)
+                     {
+                         <input type="submit" name="Button" value="Delete" />
+                     }
+                 </td>
+                 </tr>
+            </form>
+        </table>
+     </body>
+     </html>

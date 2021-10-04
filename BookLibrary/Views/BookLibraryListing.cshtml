@@ -1,0 +1,39 @@
+﻿@using BookLibrary.Models
+@model List<BookItem>
+    <html>
+    <head>
+       <link rel = "stylesheet" href= "style.css" />
+    </head>
+    <body>
+    <p></p>
+    <h1> Book Library Listing</h1>
+    <table>
+        <thead>
+            <tr>
+               <th></th>
+               <th>Image</th>
+               <th>Title</th>
+               <th>Author</th>
+               <th>ISBN</th>
+            </tr>
+        </thead>
+        <tr>
+          <a href = "hybrid:CreateNewBook?" > Add New Book</a>
+        </tr>
+        @foreach (var book in @Model)
+        {
+           <tbody >
+              <tr>
+              <td>
+                 <a href = "hybrid:EditBookDetails?id=@book.Id"> Edit </a>
+               </td>
+               <td><img src = "@book.ImageUrl" /></td>
+                  <td> @book.Title </td>
+                  <td> @book.Author </td>
+                  <td> @book.Isbn </td>
+               </tr>
+               </tbody>
+        }
+    </table>
+    </body>
+    </html>
